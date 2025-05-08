@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pointer Pointer Clone</title>
+    <link rel="stylesheet" href="style3.css" />
+  </head>
+  <body>
+    <div id="mouse-coordinates">X: 0, Y: 0</div>
+    <img id="pointer-image" src="" alt="Pointer Image" loading="lazy" />
+
+    <script>
+      function generateGridData() {
+        const screenWidth = 1920;
+        const screenHeight = 927;
+        const numCols = 60;
+        const numRows = 29;
+
+        const cellWidth = screenWidth / numCols;
+        const cellHeight = screenHeight / numRows;
+
+        const gridData = [];
+        let cellIndex = 1;
+
+        for (let row = 0; row < numRows; row++) {
+          for (let col = 0; col < numCols; col++) {
+            const pointerX = col * cellWidth + cellWidth / 2;
+            const pointerY = row * cellHeight + cellHeight / 2;
+
+            const cell = {
+              cellIndex: cellIndex++,
+              src: `img/${cellIndex - 1}.jpg`,
+              pointerX: pointerX,
+              pointerY: pointerY,
+            };
+            gridData.push(cell);
+          }
+        }
+
+        const jsonData = JSON.stringify(gridData, null, 2);
+
+        const downloadLink = document.createElement("a");
+        const blob = new Blob([jsonData], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        downloadLink.href = url;
+        downloadLink.download = "hehe.json";
+
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+      }
+
+      generateGridData();
+    </script>
+  </body>
+</html>
