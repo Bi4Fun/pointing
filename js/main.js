@@ -14,7 +14,7 @@ fetch("data/hehe.json")
   })
   .catch((error) => console.error("Error loading JSON:", error));
 
-// Tạo container cho lưới trong suốt
+// Tạo container cho lưới trong suốt (bao giờ xong thì comment đi)
 const transparentGridContainer = document.createElement("div");
 transparentGridContainer.id = "transparent-grid-container";
 document.body.appendChild(transparentGridContainer);
