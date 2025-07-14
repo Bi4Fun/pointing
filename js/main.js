@@ -52,6 +52,9 @@ function showImageDelayed(mouseX, mouseY) {
       pointerImage.style.display = "block";
       overlay.style.display = "none";
       isShowingImage = true;
+      setTimeout(function () {
+        pointerImage.style.opacity = 1;
+      }, 50);
     } else {
       pointerImage.style.display = "none";
       overlay.style.display = "flex";
