@@ -48,6 +48,7 @@ function showImageDelayed(mouseX, mouseY) {
   showImageTimeoutId = setTimeout(() => {
     const image = getGridCell(mouseX, mouseY);
     if (image) {
+      pointerImage.style.opacity = 0;
       pointerImage.src = image.src;
       pointerImage.style.display = "block";
       overlay.style.display = "none";
